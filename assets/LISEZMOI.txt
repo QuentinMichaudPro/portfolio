@@ -1,13 +1,21 @@
 Depose ici les visuels du portfolio, avec exactement ces noms :
 
   photo.jpg       ton portrait, carre, 500x500 px minimum
-  lini.png        capture ou mockup de l'application Lini (format paysage)
-  workflows.png   schema d'un workflow automatise
-  interface.png   capture de l'interface de gestion des medias
-  flux.png        visuel de la chaine de transcodage / flux media
-  design.png      planche de logos et travaux graphiques
+  lini.png        capture ou mockup de l'application Lini (paysage 16:10)
+  workflows.png   schema d'un workflow automatise (paysage 16:10)
+  interface.png   capture de l'interface de gestion des medias (paysage 16:10)
+  flux.png        visuel de la chaine de transcodage / flux media (paysage 16:10)
+  design.png      planche de travaux graphiques  -- carrousel, image 1
+  design2.png     planche de travaux graphiques  -- carrousel, image 2
+  design3.png     planche de travaux graphiques  -- carrousel, image 3
+  og.png          apercu de partage de lien, 1200x630 px (LinkedIn, WhatsApp...)
 
-Si un fichier est absent, la carte affiche simplement un cadre vert avec le
-nom du fichier attendu : le site reste fonctionnel, rien ne casse.
+Format des visuels de carte : 1600 x 1000 px (ratio 16:10), JPG ou WebP,
+moins de 300 Ko par image. Les images sont recadrees en "cover" : garde
+l'element important au centre.
 
-Format conseille : PNG ou JPG, 1200 px de large, moins de 500 Ko par image.
+Les 3 images du carrousel doivent avoir exactement les memes dimensions,
+sinon le fondu enchaine laisse voir un decalage.
+
+Si un fichier est absent, la carte affiche un cadre vert avec un court
+libelle : le site reste fonctionnel, rien ne casse.

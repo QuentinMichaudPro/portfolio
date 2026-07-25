@@ -6,14 +6,34 @@
 <title>Quentin Michaud — Automatisation & Design produit</title>
 <meta name="description" content="Quentin Michaud — Automatisation des process métier et design produit. Workflows automatisés, interfaces internes, applications mobiles.">
 
-<!-- Aperçu quand on partage le lien (remplace l'URL quand le site est en ligne) -->
+<!-- Aperçu quand on partage le lien (LinkedIn, WhatsApp, Slack…)
+     ⚠︎ Remplace https://exemple.fr par ton vrai domaine une fois le site en ligne,
+     et dépose une image d'aperçu 1200×630 px dans assets/og.png -->
 <meta property="og:title" content="Quentin Michaud — Automatisation & Design produit">
 <meta property="og:description" content="Je conçois des process automatisés — et les interfaces qui vont avec.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://exemple.fr/">
+<meta property="og:image" content="https://exemple.fr/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://exemple.fr/">
 
+<!-- Favicon : SVG intégré, aucun fichier à déposer -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233E4A57'/%3E%3Ctext x='32' y='45' font-family='Helvetica,Arial,sans-serif' font-size='38' font-weight='700' fill='%23E2933C' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
+
+<!-- Police chargée sans bloquer l'affichage du texte -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<noscript>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</noscript>
 
 <style>
 /* ═══════════════════════════════════════════
@@ -23,9 +43,10 @@
   --sage:      #E4E9D6;   /* fond du bandeau, comme la colonne du CV */
   --sage-deep: #D2DBBF;
   --ink:       #3E4A57;   /* texte principal, gris-bleu ardoise */
-  --ink-soft:  #6E7A87;
-  --ink-faint: #98A2AC;
-  --accent:    #E2933C;   /* orange des titres d'entreprise */
+  --ink-soft:  #626D79;   /* 5,3:1 sur blanc — lisible (WCAG AA) */
+  --ink-faint: #65717E;   /* 5,0:1 sur blanc, 4,8:1 sur le fond alt — lisible (WCAG AA) */
+  --accent:    #E2933C;   /* orange du CV — décor uniquement (pastilles, traits) */
+  --accent-txt:#96540A;   /* même orange, foncé pour le TEXTE : 5,9:1 sur blanc, 4,8:1 sur le sage */
   --line:      #E2E6EA;
   --bg:        #FFFFFF;
   --radius:    14px;
@@ -42,6 +63,8 @@ body{
 }
 a{color:inherit}
 img{max-width:100%;display:block}
+/* Navigation au clavier : anneau visible sur tous les éléments focusables */
+:focus-visible{outline:2px solid var(--accent-txt);outline-offset:3px;border-radius:4px}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
@@ -56,7 +79,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-links{display:flex;gap:22px;font-size:.85rem;color:var(--ink-soft);overflow-x:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
 .nav-links a{text-decoration:none;white-space:nowrap;transition:color .15s}
-.nav-links a:hover{color:var(--accent)}
+.nav-links a:hover{color:var(--accent-txt)}
 
 /* ═══ HERO ═══ */
 .hero{background:var(--sage);padding:56px 0 52px}
@@ -68,7 +91,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 }
 .hero h1{font-size:2rem;font-weight:700;letter-spacing:-.025em;line-height:1.15}
 .hero .role{
-  color:var(--accent);font-weight:600;font-size:1.02rem;
+  color:var(--accent-txt);font-weight:600;font-size:1.02rem;
   margin-top:8px;letter-spacing:.01em;
 }
 .hero .pitch{
@@ -90,7 +113,7 @@ section{padding:64px 0}
 .sec-head{margin-bottom:36px}
 .sec-kicker{
   font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;
-  color:var(--accent);font-weight:600;margin-bottom:8px;
+  color:var(--accent-txt);font-weight:600;margin-bottom:8px;
 }
 .sec-head h2{font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
 .sec-head p{color:var(--ink-soft);margin-top:10px;max-width:62ch}
@@ -104,7 +127,8 @@ section{padding:64px 0}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
 .stat{background:var(--sage);border-radius:var(--radius);padding:18px 20px}
 .stat b{display:block;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
-.stat span{font-size:.78rem;color:var(--ink-soft);line-height:1.4;display:block;margin-top:2px}
+/* un cran plus foncé que --ink-soft : le fond sage est clair (4,7:1) */
+.stat span{font-size:.78rem;color:#5C6672;line-height:1.4;display:block;margin-top:2px}
 
 /* ═══ PROJETS ═══ */
 .projects{display:grid;gap:26px}
@@ -116,7 +140,7 @@ section{padding:64px 0}
 .card-media{
   aspect-ratio:16/10;background:var(--sage);
   display:flex;align-items:center;justify-content:center;
-  color:var(--ink-faint);font-size:.8rem;text-align:center;
+  color:var(--ink);font-size:.8rem;text-align:center;padding:12px;
 }
 .card-media img{width:100%;height:100%;object-fit:cover}
 .card-body{padding:24px}
@@ -134,12 +158,14 @@ section{padding:64px 0}
 }
 .carousel-dots button{
   width:7px;height:7px;padding:0;border:0;border-radius:50%;cursor:pointer;
-  background:rgba(255,255,255,.55);transition:background .25s,transform .25s;
+  background:rgba(255,255,255,.6);transition:background .25s,transform .25s;
+  /* halo sombre : les pastilles restent visibles sur une image claire */
+  box-shadow:0 0 0 1px rgba(62,74,87,.35),0 1px 3px rgba(62,74,87,.4);
 }
 .carousel-dots button.on{background:#fff;transform:scale(1.35)}
 .card-tag{
   display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;
-  font-weight:600;color:var(--accent);margin-bottom:9px;
+  font-weight:600;color:var(--accent-txt);margin-bottom:9px;
 }
 .card h3{font-size:1.18rem;font-weight:600;letter-spacing:-.015em;margin-bottom:9px}
 .card p{color:var(--ink-soft);font-size:.94rem}
@@ -161,7 +187,7 @@ section{padding:64px 0}
   font-size:.86rem;font-weight:600;color:var(--ink);text-decoration:none;
   border-bottom:2px solid var(--accent);padding-bottom:2px;
 }
-.card-link:hover{color:var(--accent)}
+.card-link:hover{color:var(--accent-txt)}
 
 /* ═══ COMPÉTENCES ═══ */
 .skills{display:grid;gap:26px}
@@ -190,7 +216,7 @@ section{padding:64px 0}
 }
 .tl-date{font-size:.76rem;color:var(--ink-faint);font-weight:600;letter-spacing:.04em}
 .tl-item h3{font-size:1.05rem;font-weight:600;margin:3px 0 2px}
-.tl-org{font-size:.88rem;color:var(--accent);font-weight:600;margin-bottom:8px}
+.tl-org{font-size:.88rem;color:var(--accent-txt);font-weight:600;margin-bottom:8px}
 .tl-item p{color:var(--ink-soft);font-size:.92rem;max-width:64ch}
 
 /* ═══ CONTACT ═══ */
@@ -254,6 +280,7 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
 <header class="hero">
   <div class="wrap">
     <img class="avatar" src="assets/photo.jpg" alt="Portrait de Quentin Michaud"
+         width="500" height="500" decoding="async"
          onerror="this.style.display='none'">
     <div>
       <h1>Quentin Michaud</h1>
@@ -319,7 +346,8 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
       <article class="card featured">
         <div class="card-media">
           <img src="assets/lini.png" alt="Écrans de l'application Lini"
-               onerror="this.parentNode.textContent='Capture de l\'application Lini — ajoute assets/lini.png'">
+               width="1600" height="1000" decoding="async"
+               onerror="this.parentNode.textContent='Application Lini'">
         </div>
         <div class="card-body">
           <div class="card-tag">Projet indépendant · Depuis 2026</div>
@@ -341,8 +369,40 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
             <span class="chip">Firebase</span><span class="chip">RevenueCat</span>
             <span class="chip">Figma</span><span class="chip">Meta Ads</span>
           </div>
-          <!-- Remplace # par le lien vers le store ou le site de Lini -->
-          <a class="card-link" href="#">Découvrir Lini →</a>
+          <!-- Décommente et mets l'URL réelle (App Store, Play Store ou site de Lini) :
+          <a class="card-link" href="https://…">Découvrir Lini →</a>
+          -->
+        </div>
+      </article>
+
+      <!-- ── Design ── -->
+      <article class="card">
+        <div class="card-media">
+          <div class="carousel" data-interval="4000">
+            <img src="assets/design.png"  class="on" alt="Travaux graphiques — identités visuelles"
+                 width="1600" height="1000" decoding="async">
+            <img src="assets/design2.png" alt="Travaux graphiques — maquettes d'interface"
+                 width="1600" height="1000" loading="lazy" decoding="async">
+            <img src="assets/design3.png" alt="Travaux graphiques — production visuelle"
+                 width="1600" height="1000" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Design</div>
+          <h3>Identités visuelles et interfaces</h3>
+          <p>
+            Formé au design, je conçois les identités et les interfaces de mes projets :
+            logos, systèmes de couleurs, maquettes et composants réutilisables.
+          </p>
+          <ul>
+            <li>Création de logos et de chartes graphiques</li>
+            <li>Maquettes et design systems sous Figma</li>
+            <li>Retouche et production visuelle sur Photoshop</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Figma</span><span class="chip">Photoshop</span>
+            <span class="chip">Premiere Pro</span><span class="chip">Design system</span>
+          </div>
         </div>
       </article>
 
@@ -350,7 +410,8 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
       <article class="card">
         <div class="card-media">
           <img src="assets/workflows.png" alt="Schéma de workflow automatisé"
-               onerror="this.parentNode.textContent='Schéma d\'un workflow — ajoute assets/workflows.png'">
+               width="1600" height="1000" loading="lazy" decoding="async"
+               onerror="this.parentNode.textContent='Workflows automatisés'">
         </div>
         <div class="card-body">
           <div class="card-tag">Dubbing Brothers</div>
@@ -376,7 +437,8 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
       <article class="card">
         <div class="card-media">
           <img src="assets/interface.png" alt="Interface de gestion des médias"
-               onerror="this.parentNode.textContent='Capture de l\'interface — ajoute assets/interface.png'">
+               width="1600" height="1000" loading="lazy" decoding="async"
+               onerror="this.parentNode.textContent='Interface de gestion des médias'">
         </div>
         <div class="card-body">
           <div class="card-tag">Dubbing Brothers</div>
@@ -401,7 +463,8 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
       <article class="card">
         <div class="card-media">
           <img src="assets/flux.png" alt="Chaîne de transcodage"
-               onerror="this.parentNode.textContent='Visuel de la chaîne média — ajoute assets/flux.png'">
+               width="1600" height="1000" loading="lazy" decoding="async"
+               onerror="this.parentNode.textContent='Chaînes de transcodage'">
         </div>
         <div class="card-body">
           <div class="card-tag">Dubbing Brothers</div>
@@ -419,34 +482,6 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
             <span class="chip">Vantage</span><span class="chip">FFmpeg</span>
             <span class="chip">Aspera</span><span class="chip">Signiant</span>
             <span class="chip">AWS S3</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ── Design ── -->
-      <article class="card">
-        <div class="card-media">
-          <div class="carousel" data-interval="4000">
-            <img src="assets/design.png"  class="on" alt="Travaux graphiques — identités visuelles">
-            <img src="assets/design2.png" alt="Travaux graphiques — maquettes d'interface">
-            <img src="assets/design3.png" alt="Travaux graphiques — production visuelle">
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-tag">Design</div>
-          <h3>Identités visuelles et interfaces</h3>
-          <p>
-            Formé au design, je conçois les identités et les interfaces de mes projets :
-            logos, systèmes de couleurs, maquettes et composants réutilisables.
-          </p>
-          <ul>
-            <li>Création de logos et de chartes graphiques</li>
-            <li>Maquettes et design systems sous Figma</li>
-            <li>Retouche et production visuelle sur Photoshop</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Figma</span><span class="chip">Photoshop</span>
-            <span class="chip">Premiere Pro</span><span class="chip">Design system</span>
           </div>
         </div>
       </article>
@@ -561,9 +596,10 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
       <div class="contact-links">
         <a href="mailto:quentin.michaud.pro@gmail.com">✉︎ quentin.michaud.pro@gmail.com</a>
         <a href="tel:+33659088976">☏ 06 59 08 89 76</a>
-        <!-- Remplace les # par tes vrais liens, ou supprime la ligne -->
-        <a href="#">in — LinkedIn</a>
-        <a href="#">⌥ GitHub</a>
+        <!-- Décommente en mettant tes vraies URLs :
+        <a href="https://www.linkedin.com/in/…" rel="noopener">in — LinkedIn</a>
+        <a href="https://github.com/…" rel="noopener">⌥ GitHub</a>
+        -->
       </div>
     </div>
   </div>
@@ -579,12 +615,16 @@ document.querySelectorAll('.carousel').forEach(function(box){
   var imgs = box.querySelectorAll('img');
   if(imgs.length < 2) return;
 
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-roledescription', 'carrousel');
+  box.setAttribute('aria-label', 'Travaux graphiques');
+
   var dots = document.createElement('div');
   dots.className = 'carousel-dots';
   imgs.forEach(function(_, j){
     var b = document.createElement('button');
     b.type = 'button';
-    b.setAttribute('aria-label', 'Image ' + (j + 1));
+    b.setAttribute('aria-label', 'Image ' + (j + 1) + ' sur ' + imgs.length);
     b.onclick = function(){ show(j); restart(); };
     dots.appendChild(b);
   });
@@ -597,15 +637,25 @@ document.querySelectorAll('.carousel').forEach(function(box){
   function show(n){
     i = n;
     imgs.forEach(function(img, j){ img.classList.toggle('on', j === n); });
-    dots.childNodes.forEach(function(d, j){ d.classList.toggle('on', j === n); });
+    Array.prototype.forEach.call(dots.children, function(d, j){
+      d.classList.toggle('on', j === n);
+      d.setAttribute('aria-current', j === n ? 'true' : 'false');
+    });
   }
+  function stop(){ clearInterval(timer); }
   function restart(){
-    clearInterval(timer);
+    stop();
     if(!still) timer = setInterval(function(){ show((i + 1) % imgs.length); }, delay);
   }
 
-  box.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  /* Pause au survol, au focus clavier, et quand l'onglet passe en arrière-plan */
+  box.addEventListener('mouseenter', stop);
   box.addEventListener('mouseleave', restart);
+  box.addEventListener('focusin', stop);
+  box.addEventListener('focusout', restart);
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) stop(); else restart();
+  });
 
   show(0);
   restart();
