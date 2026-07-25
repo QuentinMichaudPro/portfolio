@@ -1,0 +1,13 @@
+Depose ici les visuels du portfolio, avec exactement ces noms :
+
+  photo.jpg       ton portrait, carre, 500x500 px minimum
+  lini.png        capture ou mockup de l'application Lini (format paysage)
+  workflows.png   schema d'un workflow automatise
+  interface.png   capture de l'interface de gestion des medias
+  flux.png        visuel de la chaine de transcodage / flux media
+  design.png      planche de logos et travaux graphiques
+
+Si un fichier est absent, la carte affiche simplement un cadre vert avec le
+nom du fichier attendu : le site reste fonctionnel, rien ne casse.
+
+Format conseille : PNG ou JPG, 1200 px de large, moins de 500 Ko par image.

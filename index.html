@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quentin Michaud — Automatisation & Design produit</title>
+<meta name="description" content="Quentin Michaud — Automatisation des process métier et design produit. Workflows automatisés, interfaces internes, applications mobiles.">
+
+<!-- Aperçu quand on partage le lien (remplace l'URL quand le site est en ligne) -->
+<meta property="og:title" content="Quentin Michaud — Automatisation & Design produit">
+<meta property="og:description" content="Je conçois des process automatisés — et les interfaces qui vont avec.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   PALETTE — reprise de la charte du CV
+   ═══════════════════════════════════════════ */
+:root{
+  --sage:      #E4E9D6;   /* fond du bandeau, comme la colonne du CV */
+  --sage-deep: #D2DBBF;
+  --ink:       #3E4A57;   /* texte principal, gris-bleu ardoise */
+  --ink-soft:  #6E7A87;
+  --ink-faint: #98A2AC;
+  --accent:    #E2933C;   /* orange des titres d'entreprise */
+  --line:      #E2E6EA;
+  --bg:        #FFFFFF;
+  --radius:    14px;
+  --maxw:      1080px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--ink); background:var(--bg);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+  font-size:16px;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ═══ NAV ═══ */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.nav-name{font-weight:600;font-size:.95rem;letter-spacing:-.01em;white-space:nowrap}
+.nav-links{display:flex;gap:22px;font-size:.85rem;color:var(--ink-soft);overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{text-decoration:none;white-space:nowrap;transition:color .15s}
+.nav-links a:hover{color:var(--accent)}
+
+/* ═══ HERO ═══ */
+.hero{background:var(--sage);padding:56px 0 52px}
+.hero .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px}
+.avatar{
+  width:132px;height:132px;border-radius:50%;object-fit:cover;
+  border:4px solid rgba(255,255,255,.75);
+  background:var(--sage-deep);flex-shrink:0;
+}
+.hero h1{font-size:2rem;font-weight:700;letter-spacing:-.025em;line-height:1.15}
+.hero .role{
+  color:var(--accent);font-weight:600;font-size:1.02rem;
+  margin-top:8px;letter-spacing:.01em;
+}
+.hero .pitch{
+  margin-top:16px;max-width:56ch;color:var(--ink-soft);font-size:1.02rem;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:6px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 18px;border-radius:999px;font-size:.88rem;font-weight:500;
+  text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(62,74,87,.25)}
+.btn-ghost{background:rgba(255,255,255,.7);color:var(--ink);border:1px solid rgba(62,74,87,.15)}
+.btn-ghost:hover{background:#fff;transform:translateY(-2px)}
+
+/* ═══ SECTIONS ═══ */
+section{padding:64px 0}
+.sec-head{margin-bottom:36px}
+.sec-kicker{
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.sec-head h2{font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+.sec-head p{color:var(--ink-soft);margin-top:10px;max-width:62ch}
+
+.alt{background:#FAFBF7}
+
+/* ═══ À PROPOS ═══ */
+.about{display:grid;gap:28px}
+.about p{color:var(--ink-soft);max-width:68ch}
+.about p strong{color:var(--ink);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+.stat{background:var(--sage);border-radius:var(--radius);padding:18px 20px}
+.stat b{display:block;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.stat span{font-size:.78rem;color:var(--ink-soft);line-height:1.4;display:block;margin-top:2px}
+
+/* ═══ PROJETS ═══ */
+.projects{display:grid;gap:26px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:transform .2s,box-shadow .2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(62,74,87,.10)}
+.card-media{
+  aspect-ratio:16/10;background:var(--sage);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink-faint);font-size:.8rem;text-align:center;padding:20px;
+}
+.card-media img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:24px}
+.card-tag{
+  display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;
+  font-weight:600;color:var(--accent);margin-bottom:9px;
+}
+.card h3{font-size:1.18rem;font-weight:600;letter-spacing:-.015em;margin-bottom:9px}
+.card p{color:var(--ink-soft);font-size:.94rem}
+.card ul{list-style:none;margin-top:14px;display:grid;gap:6px}
+.card li{
+  color:var(--ink-soft);font-size:.89rem;padding-left:16px;position:relative;
+}
+.card li::before{
+  content:'';position:absolute;left:0;top:.62em;
+  width:5px;height:5px;border-radius:50%;background:var(--accent);
+}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.chip{
+  font-size:.74rem;padding:4px 11px;border-radius:999px;
+  background:var(--sage);color:var(--ink);font-weight:500;
+}
+.card-link{
+  display:inline-flex;align-items:center;gap:6px;margin-top:16px;
+  font-size:.86rem;font-weight:600;color:var(--ink);text-decoration:none;
+  border-bottom:2px solid var(--accent);padding-bottom:2px;
+}
+.card-link:hover{color:var(--accent)}
+
+/* ═══ COMPÉTENCES ═══ */
+.skills{display:grid;gap:26px}
+.skill-group h4{
+  font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;
+  color:var(--ink-faint);font-weight:600;margin-bottom:12px;
+}
+.skill-list{display:flex;flex-wrap:wrap;gap:8px}
+.skill{
+  font-size:.86rem;padding:7px 14px;border-radius:8px;
+  background:#fff;border:1px solid var(--line);font-weight:500;
+}
+
+/* ═══ PARCOURS ═══ */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{
+  content:'';position:absolute;left:5px;top:6px;bottom:6px;
+  width:2px;background:var(--line);
+}
+.tl-item{position:relative;padding-bottom:34px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:'';position:absolute;left:-26px;top:7px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent);
+}
+.tl-date{font-size:.76rem;color:var(--ink-faint);font-weight:600;letter-spacing:.04em}
+.tl-item h3{font-size:1.05rem;font-weight:600;margin:3px 0 2px}
+.tl-org{font-size:.88rem;color:var(--accent);font-weight:600;margin-bottom:8px}
+.tl-item p{color:var(--ink-soft);font-size:.92rem;max-width:64ch}
+
+/* ═══ CONTACT ═══ */
+.contact{background:var(--ink);color:#fff;border-radius:20px;padding:44px 30px;text-align:center}
+.contact h2{font-size:1.7rem;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.contact p{color:rgba(255,255,255,.72);max-width:48ch;margin:0 auto 26px}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.contact-links a{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:999px;text-decoration:none;
+  font-size:.89rem;font-weight:500;
+  background:rgba(255,255,255,.1);color:#fff;
+  border:1px solid rgba(255,255,255,.16);transition:background .15s,transform .15s;
+}
+.contact-links a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+
+footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8rem}
+
+/* ═══ RESPONSIVE ═══ */
+@media (min-width:640px){
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .hero h1{font-size:2.5rem}
+  .sec-head h2{font-size:1.9rem}
+  .contact{padding:60px 40px}
+}
+@media (min-width:900px){
+  .hero{padding:76px 0 70px}
+  .hero .wrap{flex-direction:row;text-align:left;align-items:center;gap:44px}
+  .hero-actions{justify-content:flex-start}
+  .avatar{width:172px;height:172px}
+  .projects{grid-template-columns:repeat(2,1fr)}
+  .card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.1fr}
+  .card.featured .card-media{aspect-ratio:auto;height:100%;min-height:320px}
+  .card.featured .card-body{padding:34px}
+  .skills{grid-template-columns:repeat(2,1fr);gap:34px}
+  section{padding:84px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-name">Quentin Michaud</span>
+    <div class="nav-links">
+      <a href="#apropos">Profil</a>
+      <a href="#projets">Réalisations</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════
+     Remplace assets/photo.jpg par ta photo (carrée, 500×500 px minimum) -->
+<header class="hero">
+  <div class="wrap">
+    <img class="avatar" src="assets/photo.jpg" alt="Portrait de Quentin Michaud"
+         onerror="this.style.display='none'">
+    <div>
+      <h1>Quentin Michaud</h1>
+      <div class="role">Automatisation &amp; Design produit</div>
+      <p class="pitch">
+        Je conçois des process automatisés — et les interfaces qui vont avec.
+        Six ans à industrialiser des chaînes de production média chez Dubbing Brothers,
+        et une application mobile lancée en solo, du premier écran Figma au store.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projets">Voir mes réalisations</a>
+        <a class="btn btn-ghost" href="mailto:quentin.michaud.pro@gmail.com">Me contacter</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ À PROPOS ═══════════ -->
+<section id="apropos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Profil</div>
+      <h2>Le pont entre la technique et l'usage</h2>
+    </div>
+    <div class="about">
+      <p>
+        La plupart des automatisations échouent non pas parce que le script est mauvais,
+        mais parce que <strong>personne ne s'en sert</strong>. Mon travail commence là :
+        comprendre le flux réel d'une équipe, l'automatiser de bout en bout, puis construire
+        l'interface qui rend le résultat exploitable au quotidien.
+      </p>
+      <p>
+        Chez <strong>Dubbing Brothers</strong>, je pilote les flux de récupération et de livraison
+        de médias, je conçois les workflows qui les orchestrent et je fais l'interface entre les
+        équipes de production et techniques. En parallèle, j'ai développé et lancé
+        <strong>Lini</strong>, une application mobile de signalement communautaire déployée sur
+        30 villes françaises — développement, design, monétisation et acquisition compris.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>6 ans</b><span>dans la production média</span></div>
+        <div class="stat"><b>30</b><span>villes couvertes par Lini</span></div>
+        <div class="stat"><b>2</b><span>stores : iOS &amp; Android</span></div>
+        <div class="stat"><b>360°</b><span>du script à l'interface</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJETS ═══════════
+     Pour chaque projet : remplace le src de l'image et le href du lien.
+     Pour ajouter un projet, duplique un bloc <article class="card">…</article> -->
+<section id="projets" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Réalisations</div>
+      <h2>Ce que j'ai construit</h2>
+      <p>Des projets menés de la conception au déploiement, en entreprise comme en indépendant.</p>
+    </div>
+
+    <div class="projects">
+
+      <!-- ── Projet phare : Lini ── -->
+      <article class="card featured">
+        <div class="card-media">
+          <img src="assets/lini.png" alt="Écrans de l'application Lini"
+               onerror="this.parentNode.textContent='Capture de l\'application Lini — ajoute assets/lini.png'">
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Projet indépendant · Depuis 2026</div>
+          <h3>Lini — application mobile de signalement communautaire</h3>
+          <p>
+            Une application qui permet aux usagers des transports en commun de signaler
+            en temps réel ce qu'ils observent sur le réseau. Déployée sur 30 villes de France,
+            disponible sur iOS et Android. Projet mené seul : conception produit, design des
+            interfaces, développement, backend, monétisation et acquisition.
+          </p>
+          <ul>
+            <li>Application React&nbsp;Native / Expo publiée sur les deux stores</li>
+            <li>Backend temps réel et authentification sur Firebase</li>
+            <li>Abonnements et paiements via RevenueCat</li>
+            <li>Acquisition utilisateurs pilotée par campagnes Meta Ads</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">React Native</span><span class="chip">Expo</span>
+            <span class="chip">Firebase</span><span class="chip">RevenueCat</span>
+            <span class="chip">Figma</span><span class="chip">Meta Ads</span>
+          </div>
+          <!-- Remplace # par le lien vers le store ou le site de Lini -->
+          <a class="card-link" href="#">Découvrir Lini →</a>
+        </div>
+      </article>
+
+      <!-- ── Automatisation ── -->
+      <article class="card">
+        <div class="card-media">
+          <img src="assets/workflows.png" alt="Schéma de workflow automatisé"
+               onerror="this.parentNode.textContent='Schéma d\'un workflow — ajoute assets/workflows.png'">
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Dubbing Brothers</div>
+          <h3>Automatisation des process internes</h3>
+          <p>
+            Conception et déploiement de workflows automatisés pour fiabiliser les échanges
+            de données entre les outils métier et supprimer les ressaisies manuelles.
+          </p>
+          <ul>
+            <li>Workflows Power Automate et N8N sur les process récurrents</li>
+            <li>Scripts Python d'intégration d'API entre systèmes</li>
+            <li>Orchestration des livraisons combinant Vantage et PowerShell</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Power Automate</span><span class="chip">N8N</span>
+            <span class="chip">Python</span><span class="chip">PowerShell</span>
+            <span class="chip">API REST</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Interface de gestion média ── -->
+      <article class="card">
+        <div class="card-media">
+          <img src="assets/interface.png" alt="Interface de gestion des médias"
+               onerror="this.parentNode.textContent='Capture de l\'interface — ajoute assets/interface.png'">
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Dubbing Brothers</div>
+          <h3>Interface de gestion des médias et métadonnées</h3>
+          <p>
+            Développement d'un outil interne centralisant la gestion des médias et de leurs
+            métadonnées, conçu avec les équipes qui l'utilisent au quotidien.
+          </p>
+          <ul>
+            <li>Conception des parcours et des maquettes avant développement</li>
+            <li>Interface web centralisant la recherche et l'édition des métadonnées</li>
+            <li>Adoption par les équipes production et technique</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">VueJS</span><span class="chip">HTML/CSS</span>
+            <span class="chip">Python</span><span class="chip">Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Flux média ── -->
+      <article class="card">
+        <div class="card-media">
+          <img src="assets/flux.png" alt="Chaîne de transcodage"
+               onerror="this.parentNode.textContent='Visuel de la chaîne média — ajoute assets/flux.png'">
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Dubbing Brothers</div>
+          <h3>Chaînes de transcodage et flux média</h3>
+          <p>
+            Mise en place et optimisation des chaînes de transcodage pour l'ensemble des
+            formats vidéo et audio, et sécurisation des flux d'échange avec les clients.
+          </p>
+          <ul>
+            <li>Chaînes Vantage, FFmpeg et Encoder sur tous les formats livrés</li>
+            <li>Flux entrants/sortants via Signiant, Aspera, AWS S3, SFTP/FTP</li>
+            <li>Archivage LTO et administration du MAM</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Vantage</span><span class="chip">FFmpeg</span>
+            <span class="chip">Aspera</span><span class="chip">Signiant</span>
+            <span class="chip">AWS S3</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Design ── -->
+      <article class="card">
+        <div class="card-media">
+          <img src="assets/design.png" alt="Sélection de travaux graphiques"
+               onerror="this.parentNode.textContent='Logos et travaux graphiques — ajoute assets/design.png'">
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Design</div>
+          <h3>Identités visuelles et interfaces</h3>
+          <p>
+            Formé au design, je conçois les identités et les interfaces de mes projets :
+            logos, systèmes de couleurs, maquettes et composants réutilisables.
+          </p>
+          <ul>
+            <li>Création de logos et de chartes graphiques</li>
+            <li>Maquettes et design systems sous Figma</li>
+            <li>Retouche et production visuelle sur Photoshop</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Figma</span><span class="chip">Photoshop</span>
+            <span class="chip">Premiere Pro</span><span class="chip">Design system</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMPÉTENCES ═══════════ -->
+<section id="competences">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Compétences</div>
+      <h2>Ma boîte à outils</h2>
+    </div>
+    <div class="skills">
+      <div class="skill-group">
+        <h4>Automatisation &amp; développement</h4>
+        <div class="skill-list">
+          <span class="skill">Power Automate</span><span class="skill">N8N</span>
+          <span class="skill">UiPath</span><span class="skill">Python</span>
+          <span class="skill">PowerShell</span><span class="skill">VueJS</span>
+          <span class="skill">React Native</span><span class="skill">HTML/CSS</span>
+          <span class="skill">API REST</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Média &amp; infrastructure</h4>
+        <div class="skill-list">
+          <span class="skill">Vantage</span><span class="skill">FFmpeg</span>
+          <span class="skill">Signiant</span><span class="skill">Aspera</span>
+          <span class="skill">AWS S3</span><span class="skill">MAM</span>
+          <span class="skill">Archivage LTO</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Design</h4>
+        <div class="skill-list">
+          <span class="skill">Figma</span><span class="skill">Photoshop</span>
+          <span class="skill">Premiere Pro</span><span class="skill">Design system</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Gestion &amp; coordination</h4>
+        <div class="skill-list">
+          <span class="skill">Suite Microsoft 365</span><span class="skill">Gestion de projet</span>
+          <span class="skill">Coordination inter-pôles</span><span class="skill">Planning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PARCOURS ═══════════ -->
+<section id="parcours" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Parcours</div>
+      <h2>Expérience et formation</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">Depuis 2026</div>
+        <h3>Fondateur — développement d'application mobile</h3>
+        <div class="tl-org">Micro-entreprise</div>
+        <p>Conception, développement et lancement de Lini, application de signalement
+           communautaire pour les transports en commun, déployée sur 30 villes de France.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2022 — Aujourd'hui</div>
+        <h3>Assistant responsable Digitalmedia</h3>
+        <div class="tl-org">Dubbing Brothers</div>
+        <p>Automatisation des process internes, pilotage des flux de médias, coordination
+           entre les pôles production et technique, développement d'une interface de gestion
+           des médias et métadonnées, administration de l'archivage et du stockage.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2019 — 2022</div>
+        <h3>Technicien transfert son/vidéo</h3>
+        <div class="tl-org">Dubbing Brothers</div>
+        <p>Récupération et contrôle qualité des médias, création de workflows de livraison
+           automatisés, mise en place et optimisation des chaînes de transcodage.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2017</div>
+        <h3>Diplôme de l'école MAI</h3>
+        <div class="tl-org">Formation</div>
+        <p>Certification complémentaire : Videlio — Vantage.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2014</div>
+        <h3>Baccalauréat scientifique</h3>
+        <div class="tl-org">Formation</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Parlons de votre projet</h2>
+      <p>Un process à automatiser, une interface à concevoir, une application à lancer&nbsp;?
+         Écrivez-moi, je réponds vite.</p>
+      <div class="contact-links">
+        <a href="mailto:quentin.michaud.pro@gmail.com">✉︎ quentin.michaud.pro@gmail.com</a>
+        <a href="tel:+33659088976">☏ 06 59 08 89 76</a>
+        <!-- Remplace les # par tes vrais liens, ou supprime la ligne -->
+        <a href="#">in — LinkedIn</a>
+        <a href="#">⌥ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Quentin Michaud · Enghien-les-Bains · Automatisation &amp; Design produit</div>
+</footer>
+
+</body>
+</html>
