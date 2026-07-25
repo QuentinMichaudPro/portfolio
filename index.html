@@ -182,6 +182,8 @@ section{padding:64px 0}
   font-size:.74rem;padding:4px 11px;border-radius:999px;
   background:var(--sage);color:var(--ink);font-weight:500;
 }
+.card-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:16px}
+.card-links .card-link{margin-top:0}
 .card-link{
   display:inline-flex;align-items:center;gap:6px;margin-top:16px;
   font-size:.86rem;font-weight:600;color:var(--ink);text-decoration:none;
@@ -308,13 +310,12 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
     </div>
     <div class="about">
       <p>
-        La plupart des automatisations échouent non pas parce que le script est mauvais,
-        mais parce que <strong>personne ne s'en sert</strong>. Mon travail commence là :
-        comprendre le flux réel d'une équipe, l'automatiser de bout en bout, puis construire
-        l'interface qui rend le résultat exploitable au quotidien.
+        J'aime <strong>automatiser</strong>. Prendre un process métier qui fait perdre du temps,
+        comprendre comment il fonctionne vraiment, et trouver la solution qui le simplifie —
+        un workflow, un script, ou l'interface qui va avec.
       </p>
       <p>
-        Dans un <strong>studio de post-production audiovisuelle</strong>, je pilote les flux de
+        Chez <strong>Dubbing Brothers</strong>, je pilote les flux de
         récupération et de livraison de médias, je conçois les workflows qui les orchestrent et je
         fais l'interface entre les équipes de production et techniques. En parallèle, j'ai développé et lancé
         <strong>Lini</strong>, une application mobile de signalement communautaire déployée sur
@@ -370,9 +371,12 @@ footer{padding:34px 0 44px;text-align:center;color:var(--ink-faint);font-size:.8
             <span class="chip">Firebase</span><span class="chip">RevenueCat</span>
             <span class="chip">Figma</span><span class="chip">Meta Ads</span>
           </div>
-          <!-- Décommente et mets l'URL réelle (App Store, Play Store ou site de Lini) :
-          <a class="card-link" href="https://…">Découvrir Lini →</a>
-          -->
+          <div class="card-links">
+            <a class="card-link" target="_blank" rel="noopener"
+               href="https://apps.apple.com/fr/app/lini/id6755255136">Télécharger sur l'App Store →</a>
+            <a class="card-link" target="_blank" rel="noopener"
+               href="https://play.google.com/store/apps/details?id=com.anonyma93.Lini&amp;hl=fr">Télécharger sur Google Play →</a>
+          </div>
         </div>
       </article>
 
